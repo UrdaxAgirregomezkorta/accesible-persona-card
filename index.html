@@ -145,6 +145,66 @@ Carol Persona Card
             outline-offset: 2px;
         }
 
+        /* Language selection modal */
+        .language-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .language-modal.hidden {
+            display: none;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 3rem;
+            border-radius: 12px;
+            text-align: center;
+            max-width: 500px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-content h2 {
+            margin: 0 0 1.5rem 0;
+            border: none;
+            padding: 0;
+            font-size: 1.75rem;
+        }
+
+        .modal-content p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        .modal-lang-btn {
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 1.25rem;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 0.5rem;
+            min-width: 150px;
+        }
+
+        .modal-lang-btn:hover,
+        .modal-lang-btn:focus {
+            background-color: #0052a3;
+            outline: 3px solid #ffa500;
+            outline-offset: 2px;
+            transform: scale(1.05);
+        }
+
         @media (max-width: 600px) {
             body {
                 padding: 1rem;
@@ -169,6 +229,20 @@ Carol Persona Card
     </style>
 </head>
 <body>
+    <!-- Language Selection Modal -->
+    <div class="language-modal" id="language-modal" role="dialog" aria-labelledby="modal-title" aria-modal="true">
+        <div class="modal-content">
+            <h2 id="modal-title">Select Language / Seleccione Idioma</h2>
+            <p>Please choose your preferred language<br>Por favor, elija su idioma preferido</p>
+            <button onclick="selectInitialLanguage('en')" class="modal-lang-btn" aria-label="Select English">
+                English
+            </button>
+            <button onclick="selectInitialLanguage('es')" class="modal-lang-btn" aria-label="Seleccionar Español">
+                Español
+            </button>
+        </div>
+    </div>
+
     <a href="#main-content" class="skip-link" id="skip-link">Skip to main content</a>
     
     <div class="container" role="main" id="main-content" tabindex="-1">
@@ -221,7 +295,7 @@ Carol Persona Card
         const translations = {
             en: {
                 skipLink: 'Skip to main content',
-                photoAlt: 'Portrait photo of Carol, a senior woman about sixty years old wearing glasses, with gray hair and a warm, gentle smile. She represents a person with low vision due to macular degeneration.',
+                photoAlt: 'Portrait photo of Carol, a senior woman in her sixties wearing eyeglasses, with gray hair and a warm, gentle smile. She represents a persona with low vision due to macular degeneration.',
                 name: 'Carol',
                 subtitle: 'Grandmother with Macular Degeneration',
                 aboutTitle: 'About Carol',
@@ -330,12 +404,20 @@ Carol Persona Card
             setTimeout(() => announcement.remove(), 3000);
         }
 
-        // Announce page load to screen readers
+        // Function to select initial language
+        function selectInitialLanguage(lang) {
+            changeLanguage(lang);
+            document.getElementById('language-modal').classList.add('hidden');
+            
+            // Focus on skip link after closing modal
+            setTimeout(() => {
+                document.getElementById('skip-link').focus();
+            }, 100);
+        }
+
+        // Show modal on page load
         window.addEventListener('load', function() {
-            const msg = currentLang === 'en' 
-                ? 'Accessible persona card for Carol loaded successfully. Use Tab to navigate through sections.' 
-                : 'Tarjeta de persona accesible para Carol cargada exitosamente. Use Tab para navegar por las secciones.';
-            announceToScreenReader(msg);
+            document.getElementById('language-modal').focus();
         });
 
         // Add keyboard shortcuts information
