@@ -1,40 +1,394 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Owen - Accessible Persona Card</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessible Persona Card - Owen</title>
+    <style>
+        :root {
+            --color-primary: #0066cc;
+            --color-text: #1a1a1a;
+            --color-bg: #ffffff;
+            --color-border: #cccccc;
+            --color-bg-secondary: #f5f5f5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--color-text);
+            background-color: var(--color-bg-secondary);
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--color-bg);
+            border: 2px solid var(--color-border);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-primary);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-weight: normal;
+        }
+
+        .section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background-color: var(--color-bg-secondary);
+            border-radius: 8px;
+            border-left: 4px solid var(--color-primary);
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+
+        p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        ul {
+            list-style-position: inside;
+            margin-left: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .key-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-item {
+            background-color: var(--color-bg-secondary);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: var(--color-primary);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--color-primary);
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        button {
+            background-color: var(--color-primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        button:hover, button:focus {
+            background-color: #0052a3;
+            outline: 3px solid #ffa500;
+            outline-offset: 2px;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        .language-selector {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .lang-btn {
+            background-color: #f5f5f5;
+            color: var(--color-text);
+            border: 2px solid var(--color-border);
+            padding: 0.5rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 0 0.5rem;
+        }
+
+        .lang-btn:hover, .lang-btn:focus {
+            background-color: #e0e0e0;
+            outline: 3px solid #ffa500;
+            outline-offset: 2px;
+        }
+
+        .lang-btn.active {
+            background-color: var(--color-primary);
+            color: white;
+            border-color: var(--color-primary);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <article>
-    <h1 id="persona-name">Owen</h1>
-    <h2 id="persona-profile">Edad: 45 años</h2>
-    <h3 id="user-abilities">Características</h3>
-    <ul>
-      <li>Usuario ciego</li>
-      <li>Usa lector de pantalla</li>
-      <li>Navega principalmente por teclado</li>
-      <li>Requiere descripciones alternativas para imágenes</li>
-    </ul>
-    <h3 id="challenges">Barreras comunes</h3>
-    <ul>
-      <li>Contenido visual sin texto alternativo</li>
-      <li>Navegación complicada o no estructurada</li>
-      <li>Elementos inaccesibles por teclado</li>
-      <li>Poca semántica en la estructura del documento</li>
-    </ul>
-    <h3 id="assistive-tech">Tecnologías de apoyo</h3>
-    <ul>
-      <li>Lector de pantalla</li>
-      <li>Navegación por teclado</li>
-    </ul>
-    <h3 id="solutions">Recomendaciones de diseño</h3>
-    <ul>
-      <li>Texto alternativo descriptivo en imágenes (<a href="https://www.w3.org/TR/WCAG22/#text-alternatives" target="_blank" rel="noopener">WCAG 2.2: Text alternatives</a>)</li>
-      <li>Estructura clara con etiquetas semánticas (h1, h2, etc.)</li>
-      <li>Todo el contenido accesible desde teclado</li>
-      <li>Evitar dependencia de colores o elementos solo visuales</li>
-    </ul>
-  </article>
+    <a href="#main-content" class="skip-link" id="skip-link-text">Skip to main content</a>
+
+    <div class="language-selector" role="region" aria-label="Language Selection">
+        <button onclick="changeLanguage('en')" id="btn-en" class="lang-btn active" aria-pressed="true">English</button>
+        <button onclick="changeLanguage('es')" id="btn-es" class="lang-btn" aria-pressed="false">Español</button>
+    </div>
+
+    <div class="container" role="main" id="main-content">
+        <header>
+            <h1 id="name">Maria - Retired Accountant</h1>
+            <p class="subtitle" id="subtitle">Older adult with complete vision loss who uses screen reader technology</p>
+        </header>
+
+        <div class="key-info" role="region" aria-label="Key Information">
+            <div class="info-item">
+                <span class="info-label">Age:</span>
+                <span>62 years old</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Occupation:</span>
+                <span>Retired Accountant</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Disability:</span>
+                <span>Lost vision in recent years</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Primary AT:</span>
+                <span>NVDA Screen Reader</span>
+            </div>
+        </div>
+
+        <section class="section">
+            <h2>About Maria</h2>
+            <p>Maria is a 62-year-old retired accountant who has lost her vision completely in recent years. She has basic technology skills and is learning to use a screen reader (NVDA) to access digital content. Maria prefers simple structures and clear language, relying entirely on keyboard navigation and audio feedback.</p>
+        </section>
+
+        <section class="section">
+            <h2>Assistive Technologies Used</h2>
+            <ul>
+                <li>NVDA (NonVisual Desktop Access) screen reader</li>
+                <li>Keyboard-only navigation (no mouse)</li>
+                <li>Text-to-speech for reading documents and web content</li>
+                <li>Large-button keyboard for easier typing</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Main Barriers Encountered</h2>
+            <ul>
+                <li>Images without alternative text descriptions</li>
+                <li>Forms with unclear or missing labels</li>
+                <li>Dynamic content that doesn't announce changes</li>
+                <li>Poor heading structure making navigation difficult</li>
+                <li>Interactive elements not accessible via keyboard</li>
+                <li>PDFs and documents that are not screen reader compatible</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>WCAG 2.2 Guidelines to Support Maria</h2>
+            <ul>
+                <li><strong>1.1.1 Non-text Content (Level A):</strong> Provide text alternatives for all images and non-text content</li>
+                <li><strong>1.3.1 Info and Relationships (Level A):</strong> Use semantic HTML with proper heading hierarchy</li>
+                <li><strong>2.1.1 Keyboard (Level A):</strong> Ensure all functionality is operable through keyboard interface</li>
+                <li><strong>2.4.3 Focus Order (Level A):</strong> Logical and predictable tab order</li>
+                <li><strong>3.3.2 Labels or Instructions (Level A):</strong> Clear labels for all form inputs</li>
+                <li><strong>4.1.2 Name, Role, Value (Level A):</strong> Proper ARIA labels for custom controls</li>
+                <li><strong>4.1.3 Status Messages (Level AA):</strong> Announce dynamic content changes to screen readers</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Design Recommendations</h2>
+            <ul>
+                <li>Use semantic HTML elements (nav, main, article, aside, footer)</li>
+                <li>Provide descriptive alternative text for images (not just "image" or filename)</li>
+                <li>Ensure logical heading hierarchy (h1, h2, h3 in order)</li>
+                <li>Include skip navigation links for easier navigation</li>
+                <li>Label all form fields explicitly with label elements</li>
+                <li>Use ARIA live regions for dynamic content updates</li>
+                <li>Avoid complex layouts that are difficult to navigate linearly</li>
+                <li>Test with actual screen reader software (NVDA, JAWS)</li>
+            </ul>
+        </section>
+
+        <button onclick="speakCard()" aria-label="Read entire persona card aloud">
+            Read Card Aloud
+        </button>
+    </div>
+
+    <script>
+        let currentLang = 'en';
+
+        const translations = {
+            en: {
+                skip: 'Skip to main content',
+                name: 'Maria - Retired Accountant',
+                subtitle: 'Older adult with complete vision loss who uses screen reader technology',
+                age: 'Age:',
+                ageValue: '62 years old',
+                occupation: 'Occupation:',
+                occupationValue: 'Retired Accountant',
+                disability: 'Disability:',
+                disabilityValue: 'Lost vision in recent years',
+                at: 'Primary AT:',
+                atValue: 'NVDA Screen Reader',
+                aboutTitle: 'About Maria',
+                aboutText: 'Maria is a 62-year-old retired accountant who has lost her vision completely in recent years. She has basic technology skills and is learning to use a screen reader (NVDA) to access digital content. Maria prefers simple structures and clear language, relying entirely on keyboard navigation and audio feedback.',
+                atTitle: 'Assistive Technologies Used',
+                barriersTitle: 'Main Barriers Encountered',
+                wcagTitle: 'WCAG 2.2 Guidelines to Support Maria',
+                designTitle: 'Design Recommendations',
+                readBtn: 'Read Card Aloud',
+                langChanged: 'Language changed to English'
+            },
+            es: {
+                skip: 'Saltar al contenido principal',
+                name: 'María - Contadora Jubilada',
+                subtitle: 'Adulta mayor con pérdida completa de visión que usa tecnología de lector de pantalla',
+                age: 'Edad:',
+                ageValue: '62 años',
+                occupation: 'Ocupación:',
+                occupationValue: 'Contadora Jubilada',
+                disability: 'Discapacidad:',
+                disabilityValue: 'Perdió la visión en años recientes',
+                at: 'Tecnología Asistiva:',
+                atValue: 'Lector de Pantalla NVDA',
+                aboutTitle: 'Sobre María',
+                aboutText: 'María es una contadora jubilada de 62 años que ha perdido completamente su visión en los últimos años. Tiene habilidades tecnológicas básicas y está aprendiendo a usar un lector de pantalla (NVDA) para acceder a contenido digital. María prefiere estructuras simples y lenguaje claro, dependiendo completamente de la navegación por teclado y retroalimentación de audio.',
+                atTitle: 'Tecnologías Asistivas Utilizadas',
+                barriersTitle: 'Principales Barreras Encontradas',
+                wcagTitle: 'Directrices WCAG 2.2 para Apoyar a María',
+                designTitle: 'Recomendaciones de Diseño',
+                readBtn: 'Leer Tarjeta en Voz Alta',
+                langChanged: 'Idioma cambiado a Español'
+            }
+        };
+
+        function changeLanguage(lang) {
+            currentLang = lang;
+            const t = translations[lang];
+            
+            // Update HTML lang attribute
+            document.documentElement.lang = lang === 'en' ? 'en' : 'es';
+            
+            // Update all text content
+            document.getElementById('skip-link-text').textContent = t.skip;
+            document.getElementById('name').textContent = t.name;
+            document.getElementById('subtitle').textContent = t.subtitle;
+            
+            // Update button states
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+            document.getElementById('btn-en').setAttribute('aria-pressed', lang === 'en');
+            document.getElementById('btn-es').setAttribute('aria-pressed', lang === 'es');
+            
+            // Announce language change to screen readers
+            announceToScreenReader(t.langChanged);
+        }
+
+        function announceToScreenReader(message) {
+            const announcement = document.createElement('div');
+            announcement.setAttribute('role', 'status');
+            announcement.setAttribute('aria-live', 'polite');
+            announcement.className = 'sr-only';
+            announcement.textContent = message;
+            document.body.appendChild(announcement);
+            setTimeout(() => announcement.remove(), 3000);
+        }
+
+        function speakCard() {
+            if ('speechSynthesis' in window) {
+                const text = document.body.textContent;
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = currentLang === 'en' ? 'en-US' : 'es-ES';
+                utterance.rate = 1.0;
+                window.speechSynthesis.speak(utterance);
+            } else {
+                const msg = currentLang === 'en' 
+                    ? 'Sorry, your browser does not support text-to-speech.' 
+                    : 'Lo siento, tu navegador no soporta texto a voz.';
+                alert(msg);
+            }
+        }
+
+        // Announce page load to screen readers
+        window.addEventListener('load', function() {
+            announceToScreenReader('Accessible persona card for Maria loaded successfully.');
+        });
+    </script>
 </body>
 </html>
