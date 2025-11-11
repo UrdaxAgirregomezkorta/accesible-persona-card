@@ -232,12 +232,17 @@ Carol Persona Card
     <!-- Language Selection Modal -->
     <div class="language-modal" id="language-modal" role="dialog" aria-labelledby="modal-title" aria-modal="true">
         <div class="modal-content">
-            <h2 id="modal-title">Select Language / Seleccione Idioma</h2>
-            <p>Please choose your preferred language<br>Por favor, elija su idioma preferido</p>
-            <button onclick="selectInitialLanguage('en')" class="modal-lang-btn" aria-label="Select English">
+            <h2 id="modal-title">
+                <span lang="en">Select Language</span> / <span lang="es">Seleccione Idioma</span>
+            </h2>
+            <p>
+                <span lang="en">Please choose your preferred language</span><br>
+                <span lang="es">Por favor, elija su idioma preferido</span>
+            </p>
+            <button onclick="selectInitialLanguage('en')" id="modal-btn-en" class="modal-lang-btn" aria-label="English - Select this language to continue in English">
                 English
             </button>
-            <button onclick="selectInitialLanguage('es')" class="modal-lang-btn" aria-label="Seleccionar Español">
+            <button onclick="selectInitialLanguage('es')" id="modal-btn-es" class="modal-lang-btn" aria-label="Español - Seleccione este idioma para continuar en Español">
                 Español
             </button>
         </div>
@@ -408,6 +413,7 @@ Carol Persona Card
         function selectInitialLanguage(lang) {
             changeLanguage(lang);
             document.getElementById('language-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
             
             // Focus on skip link after closing modal
             setTimeout(() => {
@@ -415,9 +421,50 @@ Carol Persona Card
             }, 100);
         }
 
-        // Show modal on page load
+        // Trap focus within modal - only allow tabbing between language buttons
+        function trapFocusInModal(e) {
+            const modal = document.getElementById('language-modal');
+            if (modal.classList.contains('hidden')) return;
+
+            const btnEn = document.getElementById('modal-btn-en');
+            const btnEs = document.getElementById('modal-btn-es');
+            const focusableElements = [btnEn, btnEs];
+            const firstElement = focusableElements[0];
+            const lastElement = focusableElements[focusableElements.length - 1];
+
+            // Handle Tab key
+            if (e.key === 'Tab') {
+                if (e.shiftKey) { // Shift + Tab
+                    if (document.activeElement === firstElement) {
+                        e.preventDefault();
+                        lastElement.focus();
+                    }
+                } else { // Tab
+                    if (document.activeElement === lastElement) {
+                        e.preventDefault();
+                        firstElement.focus();
+                    }
+                }
+            }
+
+            // Prevent Escape key from closing modal
+            if (e.key === 'Escape') {
+                e.preventDefault();
+            }
+        }
+
+        // Show modal on page load and trap focus
         window.addEventListener('load', function() {
-            document.getElementById('language-modal').focus();
+            const modal = document.getElementById('language-modal');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            
+            // Add focus trap
+            document.addEventListener('keydown', trapFocusInModal);
+            
+            // Focus on first button
+            setTimeout(() => {
+                document.getElementById('modal-btn-en').focus();
+            }, 100);
         });
 
         // Add keyboard shortcuts information
