@@ -1,3 +1,7 @@
+
+Carol Persona Card
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -141,9 +145,9 @@
 </head>
 <body>
     <div class="container" role="main">
-        <div class="language-selector" role="region" aria-label="Language Selection">
-            <button onclick="changeLanguage('en')" id="btn-en" class="lang-btn active" aria-pressed="true">English</button>
-            <button onclick="changeLanguage('es')" id="btn-es" class="lang-btn" aria-pressed="false">Español</button>
+        <div class="language-selector">
+            <button onclick="changeLanguage('en')" id="btn-en" class="lang-btn active" aria-label="Switch to English" aria-pressed="true">English</button>
+            <button onclick="changeLanguage('es')" id="btn-es" class="lang-btn" aria-label="Cambiar a Español" aria-pressed="false">Español</button>
         </div>
 
         <div class="photo-container">
@@ -152,15 +156,15 @@
 
         <header>
             <h1 id="name">Carol</h1>
-            <p class="subtitle" id="subtitle">Grandmother with Macular Degeneration</p>
+            <p class="subtitle" id="subtitle" role="doc-subtitle">Grandmother with Macular Degeneration</p>
         </header>
 
-        <section>
+        <section aria-labelledby="about-title">
             <h2 id="about-title">About Carol</h2>
             <p id="about-text">Carol has always loved reading, so her fading eyesight is a sorrow to her. She tried recorded books, but she didn't like them. She made the transition from ledgers to a software program, so she's happy to use the computer. She loves getting emails from her grandkids and friends. She likes reading magazine articles online, especially when they are free. Last year, she discovered that she could get her prescriptions more cheaply online, and now she buys some things from the web. Her biggest problem is that the text is so small. She's learned how to click on the symbol to make the text bigger, but is frustrated when it doesn't work the same way on every site. She also finds that her hands aren't as steady as they used to be, and she can't always click on things accurately. As her eyes get worse, she wonders how long she'll be able to keep using the computer. All that light gray text on a white screen is just too hard to see.</p>
         </section>
 
-        <section>
+        <section aria-labelledby="tech-title">
             <h2 id="tech-title">Technologies and Preferences</h2>
             <ul id="tech-list">
                 <li>Computer for emails, shopping, and reading articles</li>
@@ -171,7 +175,7 @@
             </ul>
         </section>
 
-        <section>
+        <section aria-labelledby="barriers-title">
             <h2 id="barriers-title">Main Barriers Encountered</h2>
             <ul id="barriers-list">
                 <li>Text that is too small and cannot be enlarged properly</li>
@@ -265,8 +269,10 @@
             // Update button states
             document.getElementById('btn-en').classList.toggle('active', lang === 'en');
             document.getElementById('btn-es').classList.toggle('active', lang === 'es');
-            document.getElementById('btn-en').setAttribute('aria-pressed', lang === 'en');
-            document.getElementById('btn-es').setAttribute('aria-pressed', lang === 'es');
+            document.getElementById('btn-en').setAttribute('aria-pressed', String(lang === 'en'));
+            document.getElementById('btn-es').setAttribute('aria-pressed', String(lang === 'es'));
+            document.getElementById('btn-en').setAttribute('aria-label', lang === 'en' ? 'English selected' : 'Switch to English');
+            document.getElementById('btn-es').setAttribute('aria-label', lang === 'es' ? 'Español seleccionado' : 'Cambiar a Español');
             
             // Announce language change to screen readers
             announceToScreenReader(t.langChanged);
