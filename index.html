@@ -3,16 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accessible Persona Card - Owen</title>
+    <title>Carol - Accessible Persona Card</title>
     <style>
-        :root {
-            --color-primary: #0066cc;
-            --color-text: #1a1a1a;
-            --color-bg: #ffffff;
-            --color-border: #cccccc;
-            --color-bg-secondary: #f5f5f5;
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -20,48 +12,81 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
             line-height: 1.6;
-            color: var(--color-text);
-            background-color: var(--color-bg-secondary);
+            color: #1a1a1a;
+            background-color: #f5f5f5;
             padding: 2rem;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
-            background-color: var(--color-bg);
-            border: 2px solid var(--color-border);
-            border-radius: 12px;
+            background-color: #ffffff;
+            border-radius: 8px;
             padding: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .language-selector {
+            text-align: right;
+            margin-bottom: 2rem;
+        }
+
+        .lang-btn {
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 0.5rem;
+        }
+
+        .lang-btn:hover,
+        .lang-btn:focus {
+            background-color: #0052a3;
+            outline: 3px solid #ffa500;
+            outline-offset: 2px;
+        }
+
+        .lang-btn.active {
+            background-color: #004080;
+            font-weight: bold;
+        }
+
+        .photo-container {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .photo-container img {
+            max-width: 300px;
+            height: auto;
+            border-radius: 8px;
+            border: 2px solid #cccccc;
         }
 
         h1 {
             font-size: 2rem;
             margin-bottom: 0.5rem;
-            color: var(--color-primary);
+            color: #0066cc;
         }
 
         .subtitle {
             font-size: 1.2rem;
             color: #666;
-            margin-bottom: 1.5rem;
-            font-weight: normal;
-        }
-
-        .section {
             margin-bottom: 2rem;
-            padding: 1.5rem;
-            background-color: var(--color-bg-secondary);
-            border-radius: 8px;
-            border-left: 4px solid var(--color-primary);
         }
 
         h2 {
             font-size: 1.5rem;
+            margin-top: 2rem;
             margin-bottom: 1rem;
-            color: var(--color-primary);
+            color: #0066cc;
+            border-bottom: 2px solid #0066cc;
+            padding-bottom: 0.5rem;
         }
 
         p {
@@ -70,65 +95,13 @@
         }
 
         ul {
-            list-style-position: inside;
-            margin-left: 1rem;
+            margin-left: 2rem;
+            margin-bottom: 1rem;
         }
 
         li {
             margin-bottom: 0.75rem;
             font-size: 1.1rem;
-        }
-
-        .key-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .info-item {
-            background-color: var(--color-bg-secondary);
-            padding: 1rem;
-            border-radius: 8px;
-        }
-
-        .info-label {
-            font-weight: bold;
-            color: var(--color-primary);
-            display: block;
-            margin-bottom: 0.25rem;
-        }
-
-        .skip-link {
-            position: absolute;
-            top: -40px;
-            left: 0;
-            background: var(--color-primary);
-            color: white;
-            padding: 8px;
-            text-decoration: none;
-            border-radius: 4px;
-        }
-
-        .skip-link:focus {
-            top: 0;
-        }
-
-        button {
-            background-color: var(--color-primary);
-            color: white;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            font-size: 1rem;
-            border-radius: 8px;
-            cursor: pointer;
-            margin-top: 1rem;
-        }
-
-        button:hover, button:focus {
-            background-color: #0052a3;
-            outline: 3px solid #ffa500;
-            outline-offset: 2px;
         }
 
         .sr-only {
@@ -143,101 +116,51 @@
             border-width: 0;
         }
 
-        .language-selector {
-            text-align: center;
-            margin-bottom: 1rem;
-        }
-
-        .lang-btn {
-            background-color: #f5f5f5;
-            color: var(--color-text);
-            border: 2px solid var(--color-border);
-            padding: 0.5rem 1.5rem;
-            font-size: 1rem;
-            border-radius: 8px;
-            cursor: pointer;
-            margin: 0 0.5rem;
-        }
-
-        .lang-btn:hover, .lang-btn:focus {
-            background-color: #e0e0e0;
-            outline: 3px solid #ffa500;
-            outline-offset: 2px;
-        }
-
-        .lang-btn.active {
-            background-color: var(--color-primary);
-            color: white;
-            border-color: var(--color-primary);
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-
         @media (max-width: 600px) {
             body {
                 padding: 1rem;
             }
 
             .container {
-                padding: 1rem;
+                padding: 1.5rem;
             }
 
             h1 {
-                font-size: 1.5rem;
+                font-size: 1.75rem;
             }
 
             h2 {
                 font-size: 1.25rem;
             }
+
+            .photo-container img {
+                max-width: 100%;
+            }
         }
     </style>
 </head>
 <body>
-    <a href="#main-content" class="skip-link" id="skip-link-text">Skip to main content</a>
-
-    <div class="language-selector" role="region" aria-label="Language Selection">
-        <button onclick="changeLanguage('en')" id="btn-en" class="lang-btn active" aria-pressed="true">English</button>
-        <button onclick="changeLanguage('es')" id="btn-es" class="lang-btn" aria-pressed="false">Español</button>
-    </div>
-
-    <div class="container" role="main" id="main-content">
-        <header>
-            <h1 id="name">Carol - Grandmother with Macular Degeneration</h1>
-            <img src="carol-photo.png" alt="Carol, an elderly woman with a gentle smile, wearing glasses." width="300" height="auto">
-            <p class="subtitle" id="subtitle">Older adult with low vision who loves reading and using the computer</p>
-        </header>
-
-        <div class="key-info" role="region" aria-label="Key Information">
-            <div class="info-item">
-                <span class="info-label" id="age-label">Age:</span>
-                <span id="age-value">Senior adult</span>
-            </div>
-            <div class="info-item">
-                <span class="info-label" id="occupation-label">Occupation:</span>
-                <span id="occupation-value">Retired (formerly used ledgers)</span>
-            </div>
-            <div class="info-item">
-                <span class="info-label" id="disability-label">Disability:</span>
-                <span id="disability-value">Macular degeneration (fading eyesight)</span>
-            </div>
-            <div class="info-item">
-                <span class="info-label" id="challenges-label">Challenges:</span>
-                <span id="challenges-value">Small text, unsteady hands, low contrast</span>
-            </div>
+    <div class="container" role="main">
+        <div class="language-selector" role="region" aria-label="Language Selection">
+            <button onclick="changeLanguage('en')" id="btn-en" class="lang-btn active" aria-pressed="true">English</button>
+            <button onclick="changeLanguage('es')" id="btn-es" class="lang-btn" aria-pressed="false">Español</button>
         </div>
 
-        <section class="section">
+        <div class="photo-container">
+            <img src="carol-photo.png" alt="Carol, elderly woman with glasses, smiling gently" id="photo-alt">
+        </div>
+
+        <header>
+            <h1 id="name">Carol</h1>
+            <p class="subtitle" id="subtitle">Grandmother with Macular Degeneration</p>
+        </header>
+
+        <section>
             <h2 id="about-title">About Carol</h2>
             <p id="about-text">Carol has always loved reading, so her fading eyesight is a sorrow to her. She tried recorded books, but she didn't like them. She made the transition from ledgers to a software program, so she's happy to use the computer. She loves getting emails from her grandkids and friends. She likes reading magazine articles online, especially when they are free. Last year, she discovered that she could get her prescriptions more cheaply online, and now she buys some things from the web. Her biggest problem is that the text is so small. She's learned how to click on the symbol to make the text bigger, but is frustrated when it doesn't work the same way on every site. She also finds that her hands aren't as steady as they used to be, and she can't always click on things accurately. As her eyes get worse, she wonders how long she'll be able to keep using the computer. All that light gray text on a white screen is just too hard to see.</p>
         </section>
 
-        <section class="section">
+        <section>
             <h2 id="tech-title">Technologies and Preferences</h2>
             <ul id="tech-list">
                 <li>Computer for emails, shopping, and reading articles</li>
@@ -248,7 +171,7 @@
             </ul>
         </section>
 
-        <section class="section">
+        <section>
             <h2 id="barriers-title">Main Barriers Encountered</h2>
             <ul id="barriers-list">
                 <li>Text that is too small and cannot be enlarged properly</li>
@@ -259,38 +182,6 @@
                 <li>Complex layouts that become unusable when text is enlarged</li>
             </ul>
         </section>
-
-        <section class="section">
-            <h2 id="wcag-title">WCAG 2.2 Guidelines to Support Carol</h2>
-            <ul id="wcag-list">
-                <li><strong>1.4.3 Contrast (Minimum) (Level AA):</strong> Text must have at least 4.5:1 contrast ratio; large text at least 3:1</li>
-                <li><strong>1.4.4 Resize Text (Level AA):</strong> Text can be resized up to 200% without loss of content or functionality</li>
-                <li><strong>1.4.10 Reflow (Level AA):</strong> Content reflows for 400% zoom without horizontal scrolling</li>
-                <li><strong>1.4.12 Text Spacing (Level AA):</strong> No loss of content when user adjusts text spacing</li>
-                <li><strong>2.5.5 Target Size (Level AAA):</strong> Clickable targets should be at least 44x44 pixels</li>
-                <li><strong>2.5.8 Target Size (Minimum) (Level AA):</strong> Targets at least 24x24 pixels</li>
-                <li><strong>1.4.8 Visual Presentation (Level AAA):</strong> Support for user-selected foreground/background colors</li>
-            </ul>
-        </section>
-
-        <section class="section">
-            <h2 id="design-title">Design Recommendations</h2>
-            <ul id="design-list">
-                <li>Use high contrast color combinations (avoid light gray on white)</li>
-                <li>Ensure text can be resized to 200% without breaking layout</li>
-                <li>Design for reflow so enlarged text doesn't require horizontal scrolling</li>
-                <li>Make buttons and links large enough (minimum 44x44 pixels recommended)</li>
-                <li>Add adequate spacing between clickable elements</li>
-                <li>Use relative font sizes (rem, em) instead of fixed pixel sizes</li>
-                <li>Avoid conveying information through color alone</li>
-                <li>Test with browser zoom at 200% and 400%</li>
-                <li>Provide clear visual focus indicators for interactive elements</li>
-            </ul>
-        </section>
-
-        <button onclick="speakCard()" id="read-btn" aria-label="Read entire persona card aloud">
-            Read Card Aloud
-        </button>
     </div>
 
     <script>
@@ -298,53 +189,53 @@
 
         const translations = {
             en: {
-                skip: 'Skip to main content',
-                name: 'Carol - Grandmother with Macular Degeneration',
-                subtitle: 'Older adult with low vision who loves reading and using the computer',
-                ageLabel: 'Age:',
-                ageValue: 'Senior adult',
-                occupationLabel: 'Occupation:',
-                occupationValue: 'Retired (formerly used ledgers)',
-                disabilityLabel: 'Disability:',
-                disabilityValue: 'Macular degeneration (fading eyesight)',
-                challengesLabel: 'Challenges:',
-                challengesValue: 'Small text, unsteady hands, low contrast',
+                photoAlt: 'Carol, elderly woman with glasses, smiling gently',
+                name: 'Carol',
+                subtitle: 'Grandmother with Macular Degeneration',
                 aboutTitle: 'About Carol',
                 aboutText: 'Carol has always loved reading, so her fading eyesight is a sorrow to her. She tried recorded books, but she didn\'t like them. She made the transition from ledgers to a software program, so she\'s happy to use the computer. She loves getting emails from her grandkids and friends. She likes reading magazine articles online, especially when they are free. Last year, she discovered that she could get her prescriptions more cheaply online, and now she buys some things from the web. Her biggest problem is that the text is so small. She\'s learned how to click on the symbol to make the text bigger, but is frustrated when it doesn\'t work the same way on every site. She also finds that her hands aren\'t as steady as they used to be, and she can\'t always click on things accurately. As her eyes get worse, she wonders how long she\'ll be able to keep using the computer. All that light gray text on a white screen is just too hard to see.',
                 techTitle: 'Technologies and Preferences',
-                techList: ['Computer for emails, shopping, and reading articles', 'Browser zoom feature to enlarge text', '"Old fashioned" mobile phone with large buttons she can feel easily', 'Prefers high contrast (struggles with light gray text on white backgrounds)', 'Needs larger clickable areas due to hand tremors'],
+                techList: [
+                    'Computer for emails, shopping, and reading articles',
+                    'Browser zoom feature to enlarge text',
+                    '"Old fashioned" mobile phone with large buttons she can feel easily',
+                    'Prefers high contrast (struggles with light gray text on white backgrounds)',
+                    'Needs larger clickable areas due to hand tremors'
+                ],
                 barriersTitle: 'Main Barriers Encountered',
-                barriersList: ['Text that is too small and cannot be enlarged properly', 'Low contrast text (especially light gray on white backgrounds)', 'Text that doesn\'t reflow when enlarged, requiring horizontal scrolling', 'Small buttons and links that are hard to click accurately', 'Inconsistent zoom/text-size controls across different websites', 'Complex layouts that become unusable when text is enlarged'],
-                wcagTitle: 'WCAG 2.2 Guidelines to Support Carol',
-                wcagList: ['<strong>1.4.3 Contrast (Minimum) (Level AA):</strong> Text must have at least 4.5:1 contrast ratio; large text at least 3:1', '<strong>1.4.4 Resize Text (Level AA):</strong> Text can be resized up to 200% without loss of content or functionality', '<strong>1.4.10 Reflow (Level AA):</strong> Content reflows for 400% zoom without horizontal scrolling', '<strong>1.4.12 Text Spacing (Level AA):</strong> No loss of content when user adjusts text spacing', '<strong>2.5.5 Target Size (Level AAA):</strong> Clickable targets should be at least 44x44 pixels', '<strong>2.5.8 Target Size (Minimum) (Level AA):</strong> Targets at least 24x24 pixels', '<strong>1.4.8 Visual Presentation (Level AAA):</strong> Support for user-selected foreground/background colors'],
-                designTitle: 'Design Recommendations',
-                designList: ['Use high contrast color combinations (avoid light gray on white)', 'Ensure text can be resized to 200% without breaking layout', 'Design for reflow so enlarged text doesn\'t require horizontal scrolling', 'Make buttons and links large enough (minimum 44x44 pixels recommended)', 'Add adequate spacing between clickable elements', 'Use relative font sizes (rem, em) instead of fixed pixel sizes', 'Avoid conveying information through color alone', 'Test with browser zoom at 200% and 400%', 'Provide clear visual focus indicators for interactive elements'],
-                readBtn: 'Read Card Aloud',
+                barriersList: [
+                    'Text that is too small and cannot be enlarged properly',
+                    'Low contrast text (especially light gray on white backgrounds)',
+                    'Text that doesn\'t reflow when enlarged, requiring horizontal scrolling',
+                    'Small buttons and links that are hard to click accurately',
+                    'Inconsistent zoom/text-size controls across different websites',
+                    'Complex layouts that become unusable when text is enlarged'
+                ],
                 langChanged: 'Language changed to English'
             },
             es: {
-                skip: 'Saltar al contenido principal',
-                name: 'Carol - Abuela con Degeneración Macular',
-                subtitle: 'Adulta mayor con baja visión que ama leer y usar la computadora',
-                ageLabel: 'Edad:',
-                ageValue: 'Adulta mayor',
-                occupationLabel: 'Ocupación:',
-                occupationValue: 'Jubilada (anteriormente usaba libros de contabilidad)',
-                disabilityLabel: 'Discapacidad:',
-                disabilityValue: 'Degeneración macular (vista en deterioro)',
-                challengesLabel: 'Desafíos:',
-                challengesValue: 'Texto pequeño, manos inestables, bajo contraste',
+                photoAlt: 'Carol, mujer mayor con lentes, sonriendo suavemente',
+                name: 'Carol',
+                subtitle: 'Abuela con Degeneración Macular',
                 aboutTitle: 'Sobre Carol',
-                aboutText: 'Carol siempre ha amado leer, por lo que su vista deteriorada es una tristeza para ella. Probó audiolibros, pero no le gustaron. Hizo la transición de libros de contabilidad a un programa de software, así que está feliz de usar la computadora. Le encanta recibir correos electrónicos de sus nietos y amigos. Le gusta leer artículos de revistas en línea, especialmente cuando son gratis. El año pasado, descubrió que podía obtener sus recetas médicas más baratas en línea, y ahora compra algunas cosas en la web. Su mayor problema es que el texto es demasiado pequeño. Ha aprendido a hacer clic en el símbolo para agrandar el texto, pero se frustra cuando no funciona de la misma manera en todos los sitios. También encuentra que sus manos no son tan firmes como antes, y no siempre puede hacer clic en las cosas con precisión. A medida que sus ojos empeoran, se pregunta cuánto tiempo podrá seguir usando la computadora. Todo ese texto gris claro sobre fondo blanco es muy difícil de ver.',
+                aboutText: 'A Carol siempre le ha encantado leer, por lo que su vista deteriorada es una tristeza para ella. Probó audiolibros, pero no le gustaron. Hizo la transición de libros de contabilidad a un programa de software, así que está feliz de usar la computadora. Le encanta recibir correos electrónicos de sus nietos y amigos. Le gusta leer artículos de revistas en línea, especialmente cuando son gratis. El año pasado, descubrió que podía obtener sus recetas médicas más baratas en línea, y ahora compra algunas cosas en la web. Su mayor problema es que el texto es demasiado pequeño. Ha aprendido a hacer clic en el símbolo para agrandar el texto, pero se frustra cuando no funciona de la misma manera en todos los sitios. También encuentra que sus manos no son tan firmes como antes, y no siempre puede hacer clic en las cosas con precisión. A medida que sus ojos empeoran, se pregunta cuánto tiempo podrá seguir usando la computadora. Todo ese texto gris claro sobre fondo blanco es muy difícil de ver.',
                 techTitle: 'Tecnologías y Preferencias',
-                techList: ['Computadora para correos, compras y lectura de artículos', 'Función de zoom del navegador para agrandar el texto', 'Teléfono móvil "antiguo" con botones grandes que puede sentir fácilmente', 'Prefiere alto contraste (tiene dificultades con texto gris claro sobre fondos blancos)', 'Necesita áreas de clic más grandes debido a temblores en las manos'],
+                techList: [
+                    'Computadora para correos, compras y lectura de artículos',
+                    'Función de zoom del navegador para agrandar el texto',
+                    'Teléfono móvil "antiguo" con botones grandes que puede sentir fácilmente',
+                    'Prefiere alto contraste (tiene dificultades con texto gris claro sobre fondos blancos)',
+                    'Necesita áreas de clic más grandes debido a temblores en las manos'
+                ],
                 barriersTitle: 'Principales Barreras Encontradas',
-                barriersList: ['Texto que es demasiado pequeño y no se puede agrandar correctamente', 'Texto de bajo contraste (especialmente gris claro sobre fondos blancos)', 'Texto que no se reorganiza cuando se amplía, requiriendo desplazamiento horizontal', 'Botones y enlaces pequeños que son difíciles de hacer clic con precisión', 'Controles de zoom/tamaño de texto inconsistentes en diferentes sitios web', 'Diseños complejos que se vuelven inutilizables cuando el texto se agranda'],
-                wcagTitle: 'Directrices WCAG 2.2 para Apoyar a Carol',
-                wcagList: ['<strong>1.4.3 Contraste (Mínimo) (Nivel AA):</strong> El texto debe tener al menos una relación de contraste de 4.5:1; texto grande al menos 3:1', '<strong>1.4.4 Cambiar Tamaño del Texto (Nivel AA):</strong> El texto se puede redimensionar hasta 200% sin pérdida de contenido o funcionalidad', '<strong>1.4.10 Reflujo (Nivel AA):</strong> El contenido se reorganiza para zoom de 400% sin desplazamiento horizontal', '<strong>1.4.12 Espaciado del Texto (Nivel AA):</strong> Sin pérdida de contenido cuando el usuario ajusta el espaciado del texto', '<strong>2.5.5 Tamaño del Objetivo (Nivel AAA):</strong> Los objetivos clicables deben ser de al menos 44x44 píxeles', '<strong>2.5.8 Tamaño del Objetivo (Mínimo) (Nivel AA):</strong> Objetivos de al menos 24x24 píxeles', '<strong>1.4.8 Presentación Visual (Nivel AAA):</strong> Soporte para colores de primer plano/fondo seleccionados por el usuario'],
-                designTitle: 'Recomendaciones de Diseño',
-                designList: ['Usar combinaciones de colores de alto contraste (evitar gris claro sobre blanco)', 'Asegurar que el texto se pueda redimensionar al 200% sin romper el diseño', 'Diseñar para reflujo para que el texto ampliado no requiera desplazamiento horizontal', 'Hacer botones y enlaces lo suficientemente grandes (se recomiendan mínimo 44x44 píxeles)', 'Agregar espacio adecuado entre elementos clicables', 'Usar tamaños de fuente relativos (rem, em) en lugar de tamaños fijos en píxeles', 'Evitar transmitir información solo a través del color', 'Probar con zoom del navegador al 200% y 400%', 'Proporcionar indicadores de enfoque visual claros para elementos interactivos'],
-                readBtn: 'Leer Tarjeta en Voz Alta',
+                barriersList: [
+                    'Texto que es demasiado pequeño y no se puede agrandar correctamente',
+                    'Texto de bajo contraste (especialmente gris claro sobre fondos blancos)',
+                    'Texto que no se reorganiza cuando se amplía, requiriendo desplazamiento horizontal',
+                    'Botones y enlaces pequeños que son difíciles de hacer clic con precisión',
+                    'Controles de zoom/tamaño de texto inconsistentes en diferentes sitios web',
+                    'Diseños complejos que se vuelven inutilizables cuando el texto se agranda'
+                ],
                 langChanged: 'Idioma cambiado a Español'
             }
         };
@@ -353,38 +244,23 @@
             currentLang = lang;
             const t = translations[lang];
             
-            // Update HTML lang attribute
+            // Update HTML lang attribute for screen readers
             document.documentElement.lang = lang === 'en' ? 'en' : 'es';
             
+            // Update image alt text
+            document.getElementById('photo-alt').alt = t.photoAlt;
+            
             // Update all text content
-            document.getElementById('skip-link-text').textContent = t.skip;
             document.getElementById('name').textContent = t.name;
             document.getElementById('subtitle').textContent = t.subtitle;
-            
-            // Update key info section
-            document.getElementById('age-label').textContent = t.ageLabel;
-            document.getElementById('age-value').textContent = t.ageValue;
-            document.getElementById('occupation-label').textContent = t.occupationLabel;
-            document.getElementById('occupation-value').textContent = t.occupationValue;
-            document.getElementById('disability-label').textContent = t.disabilityLabel;
-            document.getElementById('disability-value').textContent = t.disabilityValue;
-            document.getElementById('challenges-label').textContent = t.challengesLabel;
-            document.getElementById('challenges-value').textContent = t.challengesValue;
-            
-            // Update section titles and content
             document.getElementById('about-title').textContent = t.aboutTitle;
             document.getElementById('about-text').textContent = t.aboutText;
             document.getElementById('tech-title').textContent = t.techTitle;
             document.getElementById('barriers-title').textContent = t.barriersTitle;
-            document.getElementById('wcag-title').textContent = t.wcagTitle;
-            document.getElementById('design-title').textContent = t.designTitle;
-            document.getElementById('read-btn').textContent = t.readBtn;
             
             // Update lists
             updateList('tech-list', t.techList);
             updateList('barriers-list', t.barriersList);
-            updateList('wcag-list', t.wcagList, true);
-            updateList('design-list', t.designList);
             
             // Update button states
             document.getElementById('btn-en').classList.toggle('active', lang === 'en');
@@ -396,16 +272,12 @@
             announceToScreenReader(t.langChanged);
         }
 
-        function updateList(listId, items, allowHTML = false) {
+        function updateList(listId, items) {
             const list = document.getElementById(listId);
             list.innerHTML = '';
             items.forEach(item => {
                 const li = document.createElement('li');
-                if (allowHTML) {
-                    li.innerHTML = item;
-                } else {
-                    li.textContent = item;
-                }
+                li.textContent = item;
                 list.appendChild(li);
             });
         }
@@ -420,24 +292,12 @@
             setTimeout(() => announcement.remove(), 3000);
         }
 
-        function speakCard() {
-            if ('speechSynthesis' in window) {
-                const text = document.body.textContent;
-                const utterance = new SpeechSynthesisUtterance(text);
-                utterance.lang = currentLang === 'en' ? 'en-US' : 'es-ES';
-                utterance.rate = 1.0;
-                window.speechSynthesis.speak(utterance);
-            } else {
-                const msg = currentLang === 'en' 
-                    ? 'Sorry, your browser does not support text-to-speech.' 
-                    : 'Lo siento, tu navegador no soporta texto a voz.';
-                alert(msg);
-            }
-        }
-
         // Announce page load to screen readers
         window.addEventListener('load', function() {
-            announceToScreenReader('Accessible persona card for Carol loaded successfully.');
+            const msg = currentLang === 'en' 
+                ? 'Accessible persona card for Carol loaded successfully.' 
+                : 'Tarjeta de persona accesible para Carol cargada exitosamente.';
+            announceToScreenReader(msg);
         });
     </script>
 </body>
