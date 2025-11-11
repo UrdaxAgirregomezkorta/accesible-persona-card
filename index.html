@@ -208,80 +208,82 @@
 
     <div class="container" role="main" id="main-content">
         <header>
-            <h1 id="name">Maria - Retired Accountant</h1>
-            <p class="subtitle" id="subtitle">Older adult with complete vision loss who uses screen reader technology</p>
+            <h1 id="name">Carol - Grandmother with Macular Degeneration</h1>
+            <p class="subtitle" id="subtitle">Older adult with low vision who loves reading and using the computer</p>
         </header>
 
         <div class="key-info" role="region" aria-label="Key Information">
             <div class="info-item">
                 <span class="info-label">Age:</span>
-                <span>62 years old</span>
+                <span>Senior adult</span>
             </div>
             <div class="info-item">
                 <span class="info-label">Occupation:</span>
-                <span>Retired Accountant</span>
+                <span>Retired (formerly used ledgers)</span>
             </div>
             <div class="info-item">
                 <span class="info-label">Disability:</span>
-                <span>Lost vision in recent years</span>
+                <span>Macular degeneration (fading eyesight)</span>
             </div>
             <div class="info-item">
-                <span class="info-label">Primary AT:</span>
-                <span>NVDA Screen Reader</span>
+                <span class="info-label">Challenges:</span>
+                <span>Small text, unsteady hands, low contrast</span>
             </div>
         </div>
 
         <section class="section">
-            <h2>About Maria</h2>
-            <p>Maria is a 62-year-old retired accountant who has lost her vision completely in recent years. She has basic technology skills and is learning to use a screen reader (NVDA) to access digital content. Maria prefers simple structures and clear language, relying entirely on keyboard navigation and audio feedback.</p>
+            <h2>About Carol</h2>
+            <p>Carol has always loved reading, so her fading eyesight is a sorrow to her. She tried recorded books, but she didn't like them. She made the transition from ledgers to a software program, so she's happy to use the computer. She loves getting emails from her grandkids and friends. She likes reading magazine articles online, especially when they are free. Last year, she discovered that she could get her prescriptions more cheaply online, and now she buys some things from the web. Her biggest problem is that the text is so small. She's learned how to click on the symbol to make the text bigger, but is frustrated when it doesn't work the same way on every site. She also finds that her hands aren't as steady as they used to be, and she can't always click on things accurately. As her eyes get worse, she wonders how long she'll be able to keep using the computer. All that light gray text on a white screen is just too hard to see.</p>
         </section>
 
         <section class="section">
-            <h2>Assistive Technologies Used</h2>
+            <h2>Technologies and Preferences</h2>
             <ul>
-                <li>NVDA (NonVisual Desktop Access) screen reader</li>
-                <li>Keyboard-only navigation (no mouse)</li>
-                <li>Text-to-speech for reading documents and web content</li>
-                <li>Large-button keyboard for easier typing</li>
+                <li>Computer for emails, shopping, and reading articles</li>
+                <li>Browser zoom feature to enlarge text</li>
+                <li>"Old fashioned" mobile phone with large buttons she can feel easily</li>
+                <li>Prefers high contrast (struggles with light gray text on white backgrounds)</li>
+                <li>Needs larger clickable areas due to hand tremors</li>
             </ul>
         </section>
 
         <section class="section">
             <h2>Main Barriers Encountered</h2>
             <ul>
-                <li>Images without alternative text descriptions</li>
-                <li>Forms with unclear or missing labels</li>
-                <li>Dynamic content that doesn't announce changes</li>
-                <li>Poor heading structure making navigation difficult</li>
-                <li>Interactive elements not accessible via keyboard</li>
-                <li>PDFs and documents that are not screen reader compatible</li>
+                <li>Text that is too small and cannot be enlarged properly</li>
+                <li>Low contrast text (especially light gray on white backgrounds)</li>
+                <li>Text that doesn't reflow when enlarged, requiring horizontal scrolling</li>
+                <li>Small buttons and links that are hard to click accurately</li>
+                <li>Inconsistent zoom/text-size controls across different websites</li>
+                <li>Complex layouts that become unusable when text is enlarged</li>
             </ul>
         </section>
 
         <section class="section">
-            <h2>WCAG 2.2 Guidelines to Support Maria</h2>
+            <h2>WCAG 2.2 Guidelines to Support Carol</h2>
             <ul>
-                <li><strong>1.1.1 Non-text Content (Level A):</strong> Provide text alternatives for all images and non-text content</li>
-                <li><strong>1.3.1 Info and Relationships (Level A):</strong> Use semantic HTML with proper heading hierarchy</li>
-                <li><strong>2.1.1 Keyboard (Level A):</strong> Ensure all functionality is operable through keyboard interface</li>
-                <li><strong>2.4.3 Focus Order (Level A):</strong> Logical and predictable tab order</li>
-                <li><strong>3.3.2 Labels or Instructions (Level A):</strong> Clear labels for all form inputs</li>
-                <li><strong>4.1.2 Name, Role, Value (Level A):</strong> Proper ARIA labels for custom controls</li>
-                <li><strong>4.1.3 Status Messages (Level AA):</strong> Announce dynamic content changes to screen readers</li>
+                <li><strong>1.4.3 Contrast (Minimum) (Level AA):</strong> Text must have at least 4.5:1 contrast ratio; large text at least 3:1</li>
+                <li><strong>1.4.4 Resize Text (Level AA):</strong> Text can be resized up to 200% without loss of content or functionality</li>
+                <li><strong>1.4.10 Reflow (Level AA):</strong> Content reflows for 400% zoom without horizontal scrolling</li>
+                <li><strong>1.4.12 Text Spacing (Level AA):</strong> No loss of content when user adjusts text spacing</li>
+                <li><strong>2.5.5 Target Size (Level AAA):</strong> Clickable targets should be at least 44x44 pixels</li>
+                <li><strong>2.5.8 Target Size (Minimum) (Level AA):</strong> Targets at least 24x24 pixels</li>
+                <li><strong>1.4.8 Visual Presentation (Level AAA):</strong> Support for user-selected foreground/background colors</li>
             </ul>
         </section>
 
         <section class="section">
             <h2>Design Recommendations</h2>
             <ul>
-                <li>Use semantic HTML elements (nav, main, article, aside, footer)</li>
-                <li>Provide descriptive alternative text for images (not just "image" or filename)</li>
-                <li>Ensure logical heading hierarchy (h1, h2, h3 in order)</li>
-                <li>Include skip navigation links for easier navigation</li>
-                <li>Label all form fields explicitly with label elements</li>
-                <li>Use ARIA live regions for dynamic content updates</li>
-                <li>Avoid complex layouts that are difficult to navigate linearly</li>
-                <li>Test with actual screen reader software (NVDA, JAWS)</li>
+                <li>Use high contrast color combinations (avoid light gray on white)</li>
+                <li>Ensure text can be resized to 200% without breaking layout</li>
+                <li>Design for reflow so enlarged text doesn't require horizontal scrolling</li>
+                <li>Make buttons and links large enough (minimum 44x44 pixels recommended)</li>
+                <li>Add adequate spacing between clickable elements</li>
+                <li>Use relative font sizes (rem, em) instead of fixed pixel sizes</li>
+                <li>Avoid conveying information through color alone</li>
+                <li>Test with browser zoom at 200% and 400%</li>
+                <li>Provide clear visual focus indicators for interactive elements</li>
             </ul>
         </section>
 
@@ -296,8 +298,8 @@
         const translations = {
             en: {
                 skip: 'Skip to main content',
-                name: 'Maria - Retired Accountant',
-                subtitle: 'Older adult with complete vision loss who uses screen reader technology',
+                name: 'Carol - Grandmother with Macular Degeneration',
+                subtitle: 'Older adult with low vision who loves reading and using the computer',
                 age: 'Age:',
                 ageValue: '62 years old',
                 occupation: 'Occupation:',
@@ -307,7 +309,7 @@
                 at: 'Primary AT:',
                 atValue: 'NVDA Screen Reader',
                 aboutTitle: 'About Maria',
-                aboutText: 'Maria is a 62-year-old retired accountant who has lost her vision completely in recent years. She has basic technology skills and is learning to use a screen reader (NVDA) to access digital content. Maria prefers simple structures and clear language, relying entirely on keyboard navigation and audio feedback.',
+                aboutText: 'Carol has always loved reading, so her fading eyesight is a sorrow to her. She tried recorded books, but she didn\'t like them. She made the transition from ledgers to a software program, so she\'s happy to use the computer. She loves getting emails from her grandkids and friends. She likes reading magazine articles online, especially when they are free. Her biggest problem is that the text is so small, and she struggles with light gray text on white screens.',
                 atTitle: 'Assistive Technologies Used',
                 barriersTitle: 'Main Barriers Encountered',
                 wcagTitle: 'WCAG 2.2 Guidelines to Support Maria',
@@ -317,8 +319,8 @@
             },
             es: {
                 skip: 'Saltar al contenido principal',
-                name: 'María - Contadora Jubilada',
-                subtitle: 'Adulta mayor con pérdida completa de visión que usa tecnología de lector de pantalla',
+                name: 'Carol - Abuela con Degeneración Macular',
+                subtitle: 'Adulta mayor con baja visión que ama leer y usar la computadora',
                 age: 'Edad:',
                 ageValue: '62 años',
                 occupation: 'Ocupación:',
@@ -328,7 +330,7 @@
                 at: 'Tecnología Asistiva:',
                 atValue: 'Lector de Pantalla NVDA',
                 aboutTitle: 'Sobre María',
-                aboutText: 'María es una contadora jubilada de 62 años que ha perdido completamente su visión en los últimos años. Tiene habilidades tecnológicas básicas y está aprendiendo a usar un lector de pantalla (NVDA) para acceder a contenido digital. María prefiere estructuras simples y lenguaje claro, dependiendo completamente de la navegación por teclado y retroalimentación de audio.',
+                aboutText: 'Carol siempre ha amado leer, por lo que su vista deteriorada es una tristeza para ella. Probó audiolibros, pero no le gustaron. Hizo la transición de libros de contabilidad a un programa de software, así que está feliz de usar la computadora. Le encanta recibir correos electrónicos de sus nietos y amigos. Le gusta leer artículos de revistas en línea. Su mayor problema es que el texto es demasiado pequeño y tiene dificultades con texto gris claro sobre fondos blancos.',
                 atTitle: 'Tecnologías Asistivas Utilizadas',
                 barriersTitle: 'Principales Barreras Encontradas',
                 wcagTitle: 'Directrices WCAG 2.2 para Apoyar a María',
@@ -387,7 +389,7 @@
 
         // Announce page load to screen readers
         window.addEventListener('load', function() {
-            announceToScreenReader('Accessible persona card for Maria loaded successfully.');
+            announceToScreenReader('Accessible persona card for Carol loaded successfully.');
         });
     </script>
 </body>
